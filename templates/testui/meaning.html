@@ -1,0 +1,119 @@
+﻿<section role="main">
+	<div>
+		<div>
+			<div id="timer">
+				<svg viewbox="0 0 250 250">
+					<circle class="outer" cx="125" cy="125" r="125" />
+					<circle class="inner" cx="125" cy="125" r="100" />
+					<circle class="start" cx="125" cy="125" r="79" />
+					<path class="loader" transform="translate(125, 125)"/>
+				</svg>
+				<p>
+					<span class="seconds">60s</span> Remaining
+				</p>
+			</div>
+		</div>
+		<h1 class="text-center">Listen to the conversation</h1>
+		<div class="player no-js" id="meaningPlayer" playCallBack="CheckTimerRunningMeaning">
+			<div class="controls">
+				<span class="play control" title="Play">Play</span>
+				<span class="pause control hide" title="Pause">Pause</span>
+			</div>
+			<div class="progress-player">
+				<progress value="0" max="100">
+					0%
+				</progress>
+				<span class="time curTime">0:00</span>
+				<span class="time remainTime">0:00</span>
+			</div>
+			<!--
+			<audio preload controls id="fileToPlay">
+				<source src="testdata/meaning1.mp3" type="audio/mpeg" />
+			</audio>
+			-->
+		</div>
+		<div >
+			<h2 id="testquestion"></h2>
+		</div>
+		<div class="answer"  nothover="true" id="choice1" onclick="multiClick(this,1)">
+			<p id="text1">
+				The lady will join up to internet banking.
+			</p>
+		</div>
+		<div class="answer" nothover="true" id="choice2" onclick="multiClick(this,2)">
+			<p id="text2">
+				The man is confident in making online payments.
+			</p>
+		</div>
+		<div class="answer" nothover="true" id="choice3"  onclick="multiClick(this,3)">
+			<p id="text3">
+				The payments the lady has to make can only be done at the bank.
+			</p>
+		</div>
+		<div class="answer" nothover="true" id="choice4"  onclick="multiClick(this,4)">
+			<p id="text4">
+				The man does not have to pay any bills.
+			</p>
+		</div>
+
+		<nav>
+			<ul>
+				<li></li>
+				<li>
+					<button type="submit" id="nextMeaning" class="btn btn-next disabled" onclick="nextButton(this)" name="submit">Next</button>
+				</li>
+			</ul>
+		</nav>
+
+		<div class="test-progress divider">
+			<ol class="steps">
+				<li class="done">
+					x
+				</li>
+				<li class="done">
+					x
+				</li>
+				<li class="done">
+					x
+				</li>
+				<li class="done">
+					x
+				</li>								
+				<li class="not-done">
+					x
+				</li>
+				<li class="not-done">
+					x
+				</li>
+				<li class="not-done">
+					x
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="finish">
+					*
+				</li>
+				<span>Results</span>
+			</ol>
+		</div>
+	</div>
+</section>

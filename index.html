@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html ng-app="fluent">
+	<head>
+				
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Fluent IQ</title>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<!-- css  -->
+
+		<link href="css/newresult.css" rel="stylesheet" type="text/css">
+		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"> 
+		<link href="css/overwrite.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="css/simple-sidebar.css" type="text/css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="css/googlefonts.css"  rel="stylesheet" type="text/css">
+
+		<link rel="stylesheet" href="css/newui/global.css">
+		<link rel="stylesheet" type="text/css" href="css/newui/fonts.css" />
+		<link rel="stylesheet" type="text/css" href="css/newui/fonts2.css" />
+		<!-- <link rel="stylesheet" type="text/css" href="css/intranel/global.css"> --> 
+		<link rel="stylesheet" type="text/css" href="css/angular-chart.css" />
+		
+		<script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+		
+		<!--
+			This changes the width overall to 800 from 600, so don't use in main section rename	
+		-->
+		
+<!-- start Mixpanel -->
+<script type="text/javascript">
+/*
+(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+mixpanel.init("32701635b2f90563ecac61e970b9a0c3");
+*/
+</script><!-- end Mixpanel -->
+		
+<script type='text/javascript'>
+(function (d, t) {
+ var bh = d.createElement(t), s = d.getElementsByTagName(t)[0];
+ bh.type = 'text/javascript';
+ bh.src = 'https://www.bugherd.com/sidebarv2.js?apikey=jxpp1sxdkjuexv33so2mxw';
+ s.parentNode.insertBefore(bh, s);
+ })(document, 'script');
+</script>
+
+<script>/*<![CDATA[​*/(function(w,a,b,d,s){w[a]=w[a]||{};w[a][b]=w[a][b]||{q:[],track:function(r,e,t){this.q.push({r:r,e:e,t:t||+new Date});}};var e=d.createElement(s);var f=d.getElementsByTagName(s)[0];e.async=1;e.src='//info.fluentiq.com/cdnr/300/acton/bn/tracker/18581';f.parentNode.insertBefore(e,f);})(window,'ActOn','Beacon',document,'script');ActOn.Beacon.track();/*​]]>*/</script>
+		<script>
+
+
+
+		
+/*
+	window.__insp = window.__insp || [];
+	__insp.push(['wid', 1557945380]);
+	(function() {
+	function ldinsp(){var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+	document.readyState != "complete" ? (window.attachEvent ? window.attachEvent('onload', ldinsp) : window.addEventListener('load', ldinsp, false)) : ldinsp();
+	})();
+	
+*/
+			
+			var startStage = 2;
+			var navU = navigator.userAgent;
+			// Android Mobile
+			var isAndroidMobile = navU.indexOf('Android') > -1 && navU.indexOf('Mozilla/5.0') > -1 && navU.indexOf('AppleWebKit') > -1;
+			// Apple webkit
+			var regExAppleWebKit = new RegExp(/AppleWebKit\/([\d.]+)/);
+			var resultAppleWebKitRegEx = regExAppleWebKit.exec(navU);
+			var appleWebKitVersion = (resultAppleWebKitRegEx === null ? null : parseFloat(regExAppleWebKit.exec(navU)[1]));
+			// Chrome
+			var regExChrome = new RegExp(/Chrome\/([\d.]+)/);
+			var resultChromeRegEx = regExChrome.exec(navU);
+			var chromeVersion = (resultChromeRegEx === null ? null : parseFloat(regExChrome.exec(navU)[1]));
+			// Native Android Browser			
+			var isAndroidBrowser = isAndroidMobile && (appleWebKitVersion !== null && appleWebKitVersion < 537) || (chromeVersion !== null && chromeVersion < 37);			
+			if (isAndroidBrowser){			
+				if (window.confirm('Sorry but this browser is not supported on Android. Please use the Google Chrome browser for this test instead. Click OK to go to the app store')) 
+				{
+					window.location.href='http://play.google.com/store/apps/details?id=com.android.chrome';
+				};				
+			}
+			// if >0 then in debug mode
+			if ( typeof isLoaded === 'undefined') {
+				// first check for android standard browser:
+								
+				var isLoaded = 1;
+				// js/site.min.js"
+				var scripts = ['js/common/jquery.min', 'js/common/respond.min', 'js/common/angular.min', 'js/common/angular-route.min', 'js/common/bootstrap.min', 'js/common/jquery.gauge', 'js/common/jquery.jplayer.min', 'js/common/bootbox.min',  'js/encoder/d3.min',
+				//'app/app_restest' 'js/site', 'js/common/custom',
+				 'js/timer','js/audioUi','js/bufferaudioUi','js/app/app_res', 'js/app/main', 'js/app/mictest', 'js/app/meaningtest', 'js/app/listeningtest', 'js/app/readaloudtest', 'js/app/freespeechtest', 'js/app/emailresult', 'js/app/resultspage', 'js/app/landing', 'js/recorder','js/app/account','js/intranel/button','js/intranel/circles','js/intranel/zcircles',
+				'js/app/phon_fb_shared','js/app/dashboard','js/common/charts/Chart.min','js/common/charts/angular-chart', 'js/common/charts/Chart.Scatter.min'
+				 ];
+
+				for (var i = 0; i < scripts.length; i++) {
+					if (startStage > 10) {
+						document.write('<script type="text/javascript" src="' + scripts[i] + '.js"><' + '/script>');
+					} else {
+						document.write('<script type="text/javascript" src="' + scripts[i] + '.js"><' + '/script>');
+						//document.write('<script type="text/javascript" src="'+ scripts[i] +'.js?'+ (new Date()).getTime() +'"><'+'/script>');
+					}
+				}
+
+			} else {
+				//alert("already loaded!");
+			}
+		</script>
+
+	</head>
+	<body>
+
+		<div id="topmenu" class="navbar navbar-default navbar-static-top" role="navigation" >
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#"></a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse" >
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home</a></li>
+						<li><a id="createAccount" href="#createAccount"></a></li>
+						<li><a id="login" href="#login"></a></li>
+						<li><a id="resetPW" href="#resetPW"></a></li>
+						<li><a id="completeProfile" href="#completeProfile"></a></li>
+						<li><a id="dashboard" href="#dashboard"></a></li>
+						<li><a id="profileDetails" href="#profileDetails"></a></li>
+						<li><a id="deleteAccount" href="#deleteAccount"></a></li>						
+						<li><a id="paymentDetails" href="#paymentDetails"></a></li>
+						<li><a id="stageLand" href="#IntroRes"></a></li>						
+						<li><a id="stageLandNoEmail" href="#ResIntroNoEmail"></a></li>						
+						<li><a id="stageSpeak" href="#Start"></a></li>
+						<li><a id="stageMic" href="#MicRes"></a></li>
+						<li><a id="stageMeaning" href="#MeaningRes"></a></li>
+						<li><a id="stageListening" href="#ListeningRes"></a></li>
+						<li><a id="stageSpeech" href="#SpeechRes"></a></li>
+						<li><a id="stageConv" href="#Conversation"></a></li>
+						<li><a id="stageGetRes" href="#Email"></a></li>
+						<li><a id="stageSeeResAskEmail" href="#ResultResAskEmail"></a></li>
+						<li><a id="stageSeeRes" href="#ResultRes"></a></li>					
+						<li><a id="landingpage" href="#landingpage"></a></li>
+						<li><a id="pluginheadset" href="#pluginheadset"></a></li>
+						<li><a id="checkspeakers" href="#checkspeakers"></a></li>
+						<li><a id="checkmic" href="#checkmic"></a></li>
+						<li><a id="readaloudinsns" href="#readaloudinsns"></a></li>
+						<li><a id="readaloud" href="#readaloud"></a></li>
+						<li><a id="freespeehinsns" href="#freespeechinsns"></a></li>
+						<li><a id="freespeech" href="#freespeech"></a></li>
+						<li><a id="meaninginsns" href="#meaninginsns"></a></li>
+						<li><a id="meaning" href="#meaning"></a></li>
+						<li><a id="transcriptioninsns" href="#transcriptioninsns"></a></li>
+						<li><a id="transcription" href="#transcription"></a></li>
+						<li><a id="getresults" href="#getresults"></a></li>
+						<li><a id="seeresults" href="#seeresults"></a></li>
+						<li><a id="stageSeeResNew" href="#ResultResNew"></a></li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</div>
+
+		<header id="mainheader" role="banner" >
+			<div class="container" >
+				<div id="logo"></div>
+				<button id="nav_menu" ng-click="showMenu(1)">Menu</button>
+				<ul id="header_nav" ng-controller="headerCtrl" ng-class="{'expand':showExpand == 1, 'hide':isLoggedIn == 0}">
+					<button id="close_nav_menu" ng-click="showMenu(0)">Close</button>
+					<li id="menu_dashboard" class="header_nav highlight" ng-click="gotoDashboard()" ng-class="{'selected':isDashboard==1}" >DASHBOARD</li>
+					<li id="menu_account" ng-mouseover="isactive=1"  ng-mouseleave="isactive=0" ng-init="isactive=0">
+						<div id="account_text" class="header_nav" ng-class="{'selected':isDashboard==0}">
+							MY ACCOUNT  <img src="images/arrow-black@2x.png" id="selectAccount" />
+						</div>
+						<ul id="account_select" ng-class="{'expand':isactive==1}"> <!-- class="expand" -->
+							<li ng-click="gotoProfile()">MY PROFILE</li>
+							<li ng-click="logoutAng()">SIGN OUT</li>
+						</ul>
+						
+					</li>
+				</ul>
+			</div>
+		</header>
+
+		<div id="overlay" style="display: none;">
+			<div id="overlay-background"></div>
+			<div id="overlay-container">
+				<div id="overlay-contents">
+					<div id="AllowMic">
+						<img src="images/oldui/arrow_setting.png"/>
+						<br>
+						<p>
+							<b>Please allow your microphone.</b>
+						</p>
+					</div>
+					<div id="HowAllowMic">
+						<div>
+							<b>Your microphone is disabled - please enable it.</b>
+						</div>
+						<br/>
+						<div>
+							1. Click the Chrome menu <img src="images/oldui/mic-disabled.png" class="smallimage"/> on the browser toolbar.
+							<br/>
+							2. Select <b>Always allow https://app.fluentiq.com to access your microphone.</b>.
+							<br/>
+							3. Click <b>Done</b>.
+							<br/>
+							4. Click <b>Retry now</b>
+						</div>
+						<br>
+						<div class="buttons">
+							<input width="200px" name="cancel" type="button" value="Retry now" class="" onclick="return retryMic()"/>
+						</div>
+					</div>
+					<div id="HowAllowFF">
+						<div>
+							<b>Your microphone is disabled - please enable it.</b>
+						</div>
+						<br/>
+						<div>
+							1. Click the Website icon <img src="images/oldui/website-icon.png" class="smallimage"/> on the top left of the browser toolbar.
+							<br/>
+							2. Next to <b>Use The Microphone</b> choose <b>Allow</b>.
+							<br/>
+							3. Click <b>Retry now</b>
+						</div>
+						<br>
+						<div class="buttons">
+							<input width="200px" name="cancel" type="button" value="Retry now" class="" onclick="return retryMic()"/>
+						</div>
+					</div>
+
+					<div id="AllowMicFF">
+						<img src="images/oldui/arrow_setting.png"/>
+						<br>
+						<p>
+							<b>Please share your microphone.</b>
+						</p>
+						<br>
+						<br>
+						<div class="buttons">
+							<input width="200px" name="cancel" type="button" value="Retry now" class="" onclick="return retryMic()"/>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="alert alert-success" style="display: none;">
+  				<a href="javascript: closeAlert();" class="close"  aria-label="close">&times;</a>
+  				<!-- <strong>Success!</strong> Indicates a successful or positive action. -->
+  				<div id="alertMessageSucceed"> Password Sucessfully changed! </div>
+			</div>	
+
+			<div class="alert alert-danger" style="display: none;">
+  				<a href="javascript: closeAlert();" class="close"  aria-label="close">&times;</a>
+  				<!-- <strong>Success!</strong> Indicates a successful or positive action. -->
+  				<div id="alertMessageFail"> Password Sucessfully changed! </div>
+			</div>	
+			
+			<!-- content is injected here -->
+			<div ng-view></div>
+		</div>
+		<div id="wrapper">
+			<div id="sidebar-wrapper">
+				<ul class="sidebar-nav">
+					<li>
+						<a href="#"><span class="glyphicon glyphicon-home"></span>Home</a>
+					</li>
+					<li>
+						<a href="#"><span class="glyphicon glyphicon-user"></span>Account</a>
+					</li>
+					<li>
+						<a href="#"><span class="glyphicon glyphicon-off"></span>Sign Out</a>
+					</li>
+					<li>
+						<a href="#"><span class="glyphicon glyphicon-cog"></span>Setting</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</body>
+</html>

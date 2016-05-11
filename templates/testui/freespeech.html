@@ -1,0 +1,88 @@
+﻿<section role="main">
+	<div>
+		<h1 class="text-center">Record yourself answering a question.</h1>
+
+		<div class="recorder">
+			<span id="recordingTimerText" class="timer">0:00</span>
+			<div class="controls" id="recordImageSpan">
+				<span id="startRecordFS" class="record icon icon-microphone" title="Record">Record</span>
+				<span id="recordingFS" class="stop icon icon-record-microphone hide" title="Stop"></span>
+			</div>
+			<div class="message" id="countdownText">
+				Show the question to begin
+			</div>
+		</div>
+
+		<div class="sub-section">
+			<div id="questionText" class="free-speech-text hidden">
+				<p id="testtitle">Loading ...</p>
+			</div>
+			<div id="revealButtonDiv" class="free-speech-button">			
+				<button type="submit" id="revealButton" class="btn btn-next"  onclick="showButton(this)" name="submit">Show question</button>
+			</div>
+		</div>
+
+
+
+		<nav>
+			<ul>
+				<li></li>
+				<li>
+					<button type="submit" id="nextFS" class="btn btn-next disabled" onclick="nextButton(this)" name="submit">Next</button>
+					<!-- <a href="#" class="btn btn-next disabled">Next</a> -->
+				</li>
+			</ul>
+		</nav>
+
+		<div class="test-progress divider">
+			<ol class="steps">
+				<li class="done">
+					x
+				</li>
+				<li class="done">
+					x
+				</li>
+				<li class="done">
+					x
+				</li>
+				<li class="not-done">
+					x
+				</li>
+				<li class="not-done">
+					x
+				</li>								
+				<li class="not-done">
+					X
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="finish">
+					*
+				</li>
+				<span>Results</span>
+			</ol>
+		</div>
+	</div>
+</section>

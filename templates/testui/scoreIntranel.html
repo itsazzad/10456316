@@ -1,0 +1,624 @@
+﻿<section role="main">
+	
+	<div class="upgradeSample" ng-class="{'hide':((isPaidReport==1) || (showSummaryResults==1))}">
+		<h2>Get detailed feedback on a premium plan!</h2>
+		<p>
+			See a full breakdown of your speaking and listening so that you know what to focus on to improve your English faster.
+		</p>
+		<button class="upgradeSample btn-positive" ng-click="upgradeAccountAng()">
+			Upgrade my Account
+		</button>
+		<h2 class="upgradeSample"> Here's an example of the feedback you will get on a Premium plan</h2>
+	</div>
+		
+	<div>
+		<div class="score-circles h">
+			<div class="circles-total">
+				<div class="circle" id="circle-outer"></div>
+				<div class="circle" id="circle-inner"></div>
+				<p>
+					My FluentIQ
+				</p>
+			</div>
+			<div>
+				<div class="circle" id="circle-understood"></div>
+				<p>
+					Speaking
+				</p>
+			</div>			
+			<div>
+				<div class="circle" id="circle-understanding"></div>
+				<p>
+					Listening
+				</p>
+			</div>
+		</div>
+		<!-- -->
+
+		<div class="score-about">
+			<h2>About my score</h2>
+			<p>
+				Your FluentIQ score of {{overallscore}} {{overallDetail}}
+			</p>
+
+			<button class="btn-positive" data-name="detail" ng-class="{'hide':showSummaryResults!=1}" ng-click="showDetailReportAng()">
+				Show detailed feedback
+			</button>
+			<button class="btn-positive hide" data-name="summary" ng-class="{'hide':showSummaryResults==1}" ng-click="showSummaryResults=1">
+				Show summary feedback
+			</button>
+		</div>
+
+		<div class="score-summaries" ng-class="{'hide':showSummaryResults!=1}">
+			<h2>Speaking</h2>
+			<p>
+				Your speaking score of {{speakingscore}} {{speakingDetail}} 
+			</p>
+
+			<!-- <div class="score-detail"> -->
+				<div class="score-summary" ng-repeat="subscore in SubScores.slice(0,8)" ng-class="{'hide':isPaidReport!=1}" >
+					<div class="resultlabel">
+						{{headingNames[$index]}}
+					</div>
+					<div class="level">{{subScoresLevel[$index]}}</div>					
+					<div class="meter">
+						<img ng-src="images/small/{{subscore[0].scoreProgressFile}}"/>
+						<!-- <span ng-repeat="val in subscore" ng-class="{'active':val.active==1}"></span> -->
+					</div>
+				</div>					
+				
+
+			<h2>Listening</h2>
+			<p>
+				Your listening score of {{listeningscore}} {{listeningDetail}}
+			</p>
+				<div class="score-summary" ng-repeat="subscore in SubScores.slice(8,10)" ng-class="{'hide':isPaidReport!=1}">
+					<div class="resultlabel">
+						{{headingNames[$index+8]}}
+					</div>
+					<div class="level">{{subScoresLevel[$index+8]}}</div>					
+					<div class="meter">
+						<img ng-src="images/small/{{subscore[0].scoreProgressFile}}"/>
+						<!-- <span ng-repeat="val in subscore" ng-class="{'active':val.active==1}"></span> -->
+					</div>
+				</div>					
+		</div>
+
+		<div class="score-detailed" ng-class="{'hide':showSummaryResults==1}">
+			<div class="tabs">
+				<div class="tab" data-panel="speaking"  ng-click="showSpeaking=1" ng-class="{'active':showSpeaking==1}" >
+					Speaking <span class="score speaking">{{speakingscore}}</span>
+				</div>
+				<div class="tab" data-panel="listening" ng-click="showSpeaking=0" ng-class="{'active':showSpeaking==0}">
+					Listening <span class="score listening">{{listeningscore}}</span>
+				</div>
+			</div>
+			<div class="panels">
+				<div data-name="speaking" ng-class="{'hide':showSpeaking!=1}">
+					<p><br>
+						Your speaking score of {{speakingscore}}  {{speakingDetail}}
+					</p>
+
+					<div class="score-detail">
+						<div class="score-summary">
+							<div class="resultlabel">
+								1. Pronunciation
+							</div>
+							<div class="level">
+								{{subScoresLevel[0]}}
+							</div>
+							<div class="info" title="More information" onclick="$('#Pronunciation').addClass('active');">
+								?
+							</div>
+							<div class="meter">
+								<img ng-src="images/small/{{SubScores[0][0].scoreProgressFile}}"/>
+								<!-- <span  ng-repeat="val in SubScores[0]" ng-class="{'active':val.active==1}"></span> -->
+							</div>
+						</div>
+						
+						<div class="explanation">
+							<p>
+								{{descriptions[0]}}
+							</p>
+							<div class="example">
+								<p>
+									<strong>Sounds you are having the most trouble with:</strong>
+								</p>
+								<ul class="sounds">
+									<li  ng-repeat="val in phonFeedback">
+										<button class="btn-small" ng-click="changeSoundResultsShow($index)" data-sound={{val[1]}} ng-class="{'active btn-active' : phonemeFeedbackActive.item == $index}">
+											<img ng-src="../../../images/phon/{{val[1]}}"/>
+											
+										</button>										
+									</li>
+								</ul>
+								<p id="dictationTextResult" class="sound-example">
+									<!-- !! too sucking of resources on Android
+									<span  ng-repeat="letters in lettersArray" ng-class="{'active' : letters.isSelected=='true'}">{{letters.letter}}</span>
+									-->
+								</p>
+							</div>
+						</div>
+						
+						<div class="samples">
+							<div audioui code="dictationFile.url" displaytitle="readAloudTitle.title" ></div>
+							<div audioui code="dictationExampleFile.url" displaytitle="sampleReadAloudTitle.title" ></div>
+
+						</div>
+					</div>
+
+					<div class="score-detail">
+						<div class="score-summary">
+							<div class="resultlabel">
+								2. Intonation
+							</div>
+							<div class="level">
+								{{subScoresLevel[1]}}
+							</div>
+							<div class="info" title="More information" onclick="$('#Intonation').addClass('active');">
+								?
+							</div>
+							<div class="meter">
+								<img ng-src="images/small/{{SubScores[1][0].scoreProgressFile}}"/>
+								<!-- <span  ng-repeat="val in SubScores[1]" ng-class="{'active':val.active==1}"></span> -->
+							</div>
+						</div>
+						<div class="explanation">
+							<p>
+								{{descriptions[1]}}
+							</p>
+						</div>
+						<div class="samples">
+							<div audioui code="dictationFile.url" displaytitle="readAloudTitle.title" ></div>
+							<div audioui code="dictationExampleFile.url" displaytitle="sampleReadAloudTitle.title" ></div>
+						</div>
+					</div>
+
+					<div class="score-detail">
+						<div class="score-summary">
+							<div class="resultlabel">
+								3. Pauses
+							</div>
+							<div class="level">
+								{{subScoresLevel[2]}}
+							</div>
+							<div class="info" title="More information" onclick="$('#Pauses').addClass('active');">
+								?
+							</div>
+							<div class="meter">
+								<img ng-src="images/small/{{SubScores[2][0].scoreProgressFile}}"/>
+								<!-- <span  ng-repeat="val in SubScores[2]" ng-class="{'active':val.active==1}"></span> -->
+							</div>
+						</div>
+						<div class="explanation">
+							<p>
+								{{descriptions[2]}}
+							</p>
+						</div>
+						<div class="samples">
+							<div audioui code="dictationFile.url" displaytitle="readAloudTitle.title" ></div>
+							<div audioui code="dictationExampleFile.url" displaytitle="sampleReadAloudTitle.title" ></div>
+						</div>
+					</div>
+					<div class="score-detail">
+						<div class="score-summary">
+							<div class="resultlabel">
+								4. Speed
+							</div>
+							<div class="level">
+								{{subScoresLevel[3]}}
+							</div>
+							<div class="info" title="More information" onclick="$('#Speed').addClass('active');">
+								?
+							</div>
+							<div class="meter">
+								<img ng-src="images/small/{{SubScores[3][0].scoreProgressFile}}"/>
+								<!-- <span  ng-repeat="val in SubScores[3]" ng-class="{'active':val.active==1}"></span> -->
+							</div>
+						</div>
+						<div class="explanation">
+							<p>
+								{{descriptions[3]}}
+							</p>
+						</div>
+						<div class="samples">
+							<div audioui code="dictationFile.url" displaytitle="readAloudTitle.title" ></div>
+							<div audioui code="dictationExampleFile.url" displaytitle="sampleReadAloudTitle.title" ></div>
+						</div>
+					</div>
+
+					<div class="score-detail">
+						<div class="score-summary">
+							<div class="resultlabel">
+								5. Vocabulary Mastery
+							</div>
+							<div class="level">
+								{{subScoresLevel[4]}}
+							</div>
+							<div class="info" title="More information" onclick="$('#VocabularyMastery').addClass('active');">
+								?
+							</div>
+							<div class="meter">
+								<img ng-src="images/small/{{SubScores[4][0].scoreProgressFile}}"/>
+								<!-- <span  ng-repeat="val in SubScores[4]" ng-class="{'active':val.active==1}"></span> -->
+							</div>
+						</div>
+						<div class="explanation">
+							<p>
+								{{descriptions[4]}}
+							</p>
+						</div>
+						<div class="samples">
+							<div audioui code="dictationFile.url" displaytitle="readAloudTitle.title" ></div>
+							<div audioui code="dictationExampleFile.url" displaytitle="sampleReadAloudTitle.title" ></div>
+						</div>
+						<div class="vocab-example">
+							<p id="dictationWordShowResult">
+								<!-- !! too sucking of resources on Android
+								<span  ng-repeat="word in wordsArray" ng-class="{'active' : word.isSelected=='true'}">{{word.word}}<span class="nounderline"> </span></span>
+								-->
+							</p>
+						</div>
+					</div>
+
+					<div class="score-detail">
+						<div class="score-summary">
+							<div class="resultlabel">
+								6. Range of Vocabulary
+							</div>
+							<div class="level">
+								{{subScoresLevel[5]}}
+							</div>
+							<div class="info" title="More information" onclick="$('#RangeVocabulary').addClass('active');">
+								?
+							</div>
+							<div class="meter">
+								<img ng-src="images/small/{{SubScores[5][0].scoreProgressFile}}"/>
+								<!-- <span  ng-repeat="val in SubScores[5]" ng-class="{'active':val.active==1}"></span> -->
+							</div>
+						</div>
+						<div class="explanation">
+							<p>
+								{{descriptions[5]}}
+							</p>
+						</div>
+						<div class="samples">
+							<div class="example">
+								<p><strong>{{freeSpeechQuestion}}</strong></p>
+							</div>								
+							<div audioui code="freeSpeechFile.url" displaytitle="freeSpeechTitle.title" ></div>
+							<!-- <div audioui code="freeSpeechExampleFile.url" displaytitle="sampleFreeSpeechTitle.title" ></div> -->							
+						</div>
+					</div>
+
+					<div class="score-detail">
+						<div class="score-summary">
+							<div class="resultlabel">
+								7. Grammar Mastery
+							</div>
+							<div class="level">
+								{{subScoresLevel[6]}}
+							</div>
+							<div class="info" title="More information" onclick="$('#GrammarMastery').addClass('active');">
+								?
+							</div>
+							<div class="meter">
+								<img ng-src="images/small/{{SubScores[6][0].scoreProgressFile}}"/>
+								<!-- <span  ng-repeat="val in SubScores[6]" ng-class="{'active':val.active==1}"></span> -->
+							</div>
+						</div>
+						<div class="explanation">
+							<p>
+								{{descriptions[6]}}
+							</p>
+						</div>
+						<div class="samples">
+							<div class="example">
+								<p>
+									<strong>{{freeSpeechQuestion}}</strong>
+								</p>
+							</div>	
+							<div audioui code="freeSpeechFile.url" displaytitle="freeSpeechTitle.title" ></div>
+							<!-- <div audioui code="freeSpeechExampleFile.url" displaytitle="sampleFreeSpeechTitle.title" ></div> -->							
+						</div>
+					</div>
+					<div class="score-detail">
+						<div class="score-summary">
+							<div class="resultlabel">
+								8. Sentence Structure
+							</div>
+							<div class="level">
+								{{subScoresLevel[7]}}
+							</div>
+							<div class="info" title="More information" onclick="$('#SentenceStructure').addClass('active');">
+								?
+							</div>
+							<div class="meter">
+								<img ng-src="images/small/{{SubScores[7][0].scoreProgressFile}}"/>
+								<!-- <span  ng-repeat="val in SubScores[7]" ng-class="{'active':val.active==1}"></span> -->
+							</div>
+						</div>
+						<div class="explanation">
+							<p>
+								{{descriptions[7]}}
+							</p>
+						</div>
+						<div class="samples">
+							<div class="example">
+								<p>
+									<strong>{{freeSpeechQuestion}}</strong>
+								</p>
+							</div>																					
+							<div audioui code="freeSpeechFile.url" displaytitle="freeSpeechTitle.title" ></div>
+							<!-- <div audioui code="freeSpeechExampleFile.url" displaytitle="sampleFreeSpeechTitle.title" ></div> -->							
+						</div>
+					</div>
+				</div>
+
+				<div data-name="listening" ng-class="{'hide':showSpeaking==1}">
+					<p><br>
+						Your listening score of {{listeningscore}}  {{listeningDetail}}
+					</p>
+
+					<div class="score-detail">
+						<div class="score-summary">
+							<div class="resultlabel">
+								9. Listening Comprehension
+							</div>
+							<div class="level">
+								{{subScoresLevel[8]}}
+							</div>
+							<div class="info" title="More information" onclick="$('#Comprehension').addClass('active');">
+								?
+							</div>
+							<div class="meter">
+								<img ng-src="images/small/{{SubScores[8][0].scoreProgressFile}}"/>
+								<!-- <span  ng-repeat="val in SubScores[8]" ng-class="{'active':val.active==1}"></span> -->
+							</div>
+						</div>
+						<div class="explanation">
+							<p>
+								{{comprehensionDescription}}
+							</p>
+						</div>
+						<div class="collapsibles">
+							<div class="collapsibles-group">
+								<section class="collapsible" ng-repeat="comps in comprehensions.slice(0,3)" ng-class="{'incorrect' : comps.score==0, 'correct' : comps.score>0, 'collapsed' : toggleMeaningArray[$index] == 0}" >
+									<header ng-click="toggleMeaning($index)">
+										<div class="title">
+											Question {{comps.questionNumber}}
+										</div>
+										<div class="result"></div>
+									</header>
+									<div class="body">
+
+										<div audioui code="comps.soundFile" ></div>
+										<p class="intro">
+											{{comps.questionText}}
+										</p>
+										<div class="answer"  ng-repeat="answer in comps.answers"  ng-class="{'selected' : answer.chosen==1, 'correct' : answer.isCorr==1}">
+											<p>
+												{{answer.text}}
+											</p>
+										</div>
+
+									</div>
+								</section>
+							</div>
+
+							<div class="collapsibles-group">
+								<section class="collapsible collapsed" ng-repeat="comps in comprehensions.slice(3,5)" ng-class="{'incorrect' : comps.score==0, 'correct' : comps.score>0, 'collapsed' : toggleMeaningArray[$index+3] == 0 }" >
+									<header ng-click="toggleMeaning($index+3)">
+										<div class="title">
+											Question {{comps.questionNumber}}
+										</div>
+										<div class="result"></div>
+									</header>
+									<div class="body">
+
+										<div audioui code="comps.soundFile" ></div>
+										<p class="intro">
+											{{comps.questionText}}
+										</p>
+										<div class="answer"  ng-repeat="answer in comps.answers"  ng-class="{'selected' : answer.chosen==1, 'correct' : answer.isCorr==1}" >
+											<p>
+												{{answer.text}}
+											</p>
+										</div>
+
+									</div>
+								</section>
+							</div>
+						</div>
+					</div>
+
+					<div class="score-detail">
+						<div class="score-summary">
+							<div class="resultlabel">
+								10. Listening Accuracy
+							</div>
+							<div class="level">
+								{{subScoresLevel[9]}}
+							</div>
+							<div class="info" title="More information" onclick="$('#Transcription').addClass('active');">
+								?
+							</div>
+							<div class="meter">
+								<img ng-src="images/small/{{SubScores[9][0].scoreProgressFile}}"/>
+								<!-- <span  ng-repeat="val in SubScores[9]" ng-class="{'active':val.active==1}"></span> -->
+							</div>
+						</div>
+						<div class="explanation">
+							<p>
+								Click on the transcripts to see how you went.
+							</p>
+						</div>
+						<div class="collapsibles">
+							<div class="collapsibles-group">
+								<section class="collapsible collapsed"  ng-repeat="trans in transcriptions.slice(0,3)" ng-class="{'incorrect' : trans.score<6, 'correct' : trans.score>=6, 'collapsed' : toggleTranscriptionArray[$index] == 0 }"  >
+									<!-- 	<section class="collapsible correct" > -->
+									<header ng-click="toggleTranscription($index)">
+										<div class="title">
+											Transcript {{trans.questionNumber}}
+										</div>
+										<div class="result"></div>
+									</header>
+									<div class="body">
+										<div audioui code="trans.soundFile"></div>
+										<p>
+											<span class="intro">What was said:</span>
+											{{trans.textCorrect}}
+											<br />
+										</p>
+										<p>
+											<span class="intro">What you typed:</span>
+											{{trans.textTyped}}
+											<br />
+										</p>
+
+									</div>
+								</section>
+							</div>							
+							<div class="collapsibles-group">
+								<section class="collapsible collapsed"  ng-repeat="trans in transcriptions.slice(3,5)" ng-class="{'incorrect' : trans.score<6, 'correct' : trans.score>=6, 'collapsed' : toggleTranscriptionArray[$index+3] == 0 }"  >
+									<!-- 	<section class="collapsible correct" > -->
+									<header ng-click="toggleTranscription($index+3)">
+										<div class="title">
+											Transcript {{trans.questionNumber}}
+										</div>
+										<div class="result"></div>
+									</header>
+									<div class="body">
+										<div audioui code="trans.soundFile"></div>
+										<p>
+											<span class="intro">What was said:</span>
+											{{trans.textCorrect}}
+											<br />
+										</p>
+										<p>
+											<span class="intro">What you typed:</span>
+											{{trans.textTyped}}
+											<br />
+										</p>
+
+									</div>
+								</section>								
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- <button class="btn-positive" data-name="detail" ng-click="updateFiles()"></button> -->		
+		<h1 class="help_friend">Help your friends!</h1>
+		<p class="help_friend">
+			FluentIQ is here to help people. So why not share FluentIQ with your friends? They will love you for it!
+		</p>
+		<div class="help_friend">
+			<img src="images/icon-share-fb.svg" />
+			<img src="images/icon-share-linkedin.svg" />
+			<img src="images/icon-share-twitter.svg" />
+		</div>
+		<div id="Pronunciation" class="modal-dialog-whole">
+			<div>
+				<h1>Pronunciation</h1>
+				<p>
+					Pronunciation refers to our ability to produce individual sounds correctly. If there is a sound in English which your native language does not have, you will probably have trouble with it.
+				</p>
+				<a href="" onclick="$('#Pronunciation').removeClass('active');return false;" title="OK" class="btn btn-large btn-positive">OK</a>
+			</div>
+		</div>
+		<div id="Intonation" class="modal-dialog-whole">
+			<div>
+				<h1>Intonation</h1>
+				<p>
+					Intonation is variation in spoken pitch. It involves dividing speech into thought groups, focusing on particular words, and using a pitch movement. These differences distinguish questions from statements, focus attention on new information, and express speaker emotions.
+				</p>
+				<a href="" onclick="$('#Intonation').removeClass('active');return false;" title="OK" class="btn btn-large btn-positive">OK</a>
+			</div>
+		</div>
+		<div id="Pauses" class="modal-dialog-whole">
+			<div>
+				<h1>Pauses</h1>
+				<p>
+					It is natural for speech to have some pauses. They divide speech into thought groups and can highlight important information. Too many long pauses which are inappropriately placed can affect the fluency and comprehensibility of your speech.
+				</p>
+				<a href="" onclick="$('#Pauses').removeClass('active');return false;" title="OK" class="btn btn-large btn-positive">OK</a>
+			</div>
+		</div>
+		<div id="Speed" class="modal-dialog-whole">
+			<div>
+				<h1>Speed</h1>
+				<p>
+					Individual speakers differ from others in their natural rate of speech. If your speech is too slow or too fast, it may interfere with your comprehensibility.
+				</p>
+				<a href="" onclick="$('#Speed').removeClass('active');return false;" title="OK" class="btn btn-large btn-positive">OK</a>
+			</div>
+		</div>
+		<div id="VocabularyMastery" class="modal-dialog-whole">
+			<div>
+				<h1>Vocabulary Mastery</h1>
+				<p>
+					Vocabulary mastery refers to mispronunciations of words which are likely due to their being unfamiliar than mispronunciations of sounds (word stress errors, hesitations, etc.).
+				</p>
+				<a href="" onclick="$('#VocabularyMastery').removeClass('active');return false;" title="OK" class="btn btn-large btn-positive">OK</a>
+			</div>
+		</div>
+		<div id="RangeVocabulary" class="modal-dialog-whole">
+			<div>
+				<h1>Range of Vocabulary</h1>
+				<p>
+					Range of vocabulary refers to the level, variety, and relevance of words chosen for self-expression.
+				</p>
+				<a href="" onclick="$('#RangeVocabulary').removeClass('active');return false;" title="OK" class="btn btn-large btn-positive">OK</a>
+			</div>
+		</div>
+		<div id="GrammarMastery" class="modal-dialog-whole">
+			<div>
+				<h1>Grammar Mastery</h1>
+				<p>
+					Grammar mastery refers to the grammatical correctness of your sentences.
+				</p>
+				<a href="" onclick="$('#GrammarMastery').removeClass('active');return false;" title="OK" class="btn btn-large btn-positive">OK</a>
+			</div>
+		</div>
+		<div id="SentenceStructure" class="modal-dialog-whole">
+			<div>
+				<h1>Sentence Structure</h1>
+				<p>
+					Sentence structures refers to the length and complexity of sentences you use.
+				</p>
+				<p>
+					For example, below one complex sentence expresses the same meaning as the three simple sentences but does it in a more concise and fluent manner.
+				</p>
+				<p class="example">
+					"I did the laundry. I cleaned the house. I was talking to my friend on the phone all the time."
+				</p>
+				<p class="example">
+					"I did the laundry and cleaned the house while talking to my friend on the phone."
+				</p>
+				<a href="" onclick="$('#SentenceStructure').removeClass('active');return false;" title="OK" class="btn btn-large btn-positive">OK</a>
+			</div>
+		</div>
+		<div id="Comprehension" class="modal-dialog-whole">
+			<div>
+				<h1>Comprehension</h1>
+				<p>
+					Listening comprehension refers to our ability to extract explicit and implicit information from other people’s speech. It involves understanding the meaning of individual words and sentences but also the purpose and attitudes of the speaker.
+				</p>
+				<a href="" onclick="$('#Comprehension').removeClass('active');return false;" title="OK" class="btn btn-large btn-positive">OK</a>
+			</div>
+		</div>
+		<div id="Transcription" class="modal-dialog-whole">
+			<div>
+				<h1>Transcription</h1>
+				<p>
+					Transcription refers to our ability to understand and reproduce the information we hear. Comparing the original sentences to what you wrote will help you to identify where your challenges lie: is it segmenting the stream of speech into words, hearing differences between sounds, or simply knowing the words?
+				</p>
+				<a href="" onclick="$('#Transcription').removeClass('active');return false;" title="OK" class="btn btn-large btn-positive">OK</a>
+			</div>
+		</div>
+
+	</div>
+</section>

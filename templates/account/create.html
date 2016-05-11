@@ -1,0 +1,21 @@
+﻿<section role="main">
+	<div>
+		<h1 class="icon icon-email text-center" ng-class="{'hide':createAccountDone!=0}">Create an account</h1>
+		<h1 class="icon icon-email text-center" ng-class="{'hide':createAccountDone==0}">Check your email!</h1>
+		
+		<form id="createForm" ng-submit="createAccountAng()" name="get_results" ng-class="{'hide':createAccountDone!=0}">
+			<div class="form-group">
+				<label>Your email</label>
+				<input type="email" name="email" placeholder="Email address"/>
+			</div>
+
+			<button type="submit" class="btn-positive" name="submit" value="start">
+				Create account
+			</button>
+			<br><br>
+			<a  href="javascript: curstage = userUIEnum.LOGIN;document.getElementById('login').click();">Login if you already have an account</a>
+		</form>	
+ 		<div id="checkYourEmail" ng-class="{'hide':createAccountDone==0}">We've sent and email to {{accountEmail}} with a link to complete sign-up.</div> 
+	</div>
+	
+</section>

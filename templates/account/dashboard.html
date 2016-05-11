@@ -1,0 +1,106 @@
+<section role="main" class="dashboard">
+		<!-- <button class="btn-positive" onclick="JavaScript:logout()">
+			Logout
+		</button> -->
+	<div id="dash-top" class="dashboard-content">
+		<div>
+			<h1>Hi {{username}}</h1>
+		</div>
+		<button class="btn-positive" ng-click="startTest()">
+			Start a test!
+		</button>
+	</div>
+
+	<div id="dash-mid" class="dashboard-content">
+		<div id="dash-mid-menu">
+			<div ng-class="{'selected':tabChooseStage==0}" ng-click="tabChooseStage=0;selectStage=1;plotAssessmentDashboard();destroyGraph()">
+				Latest Assessment
+			</div>
+			
+			<div  ng-class="{'selected':tabChooseStage==1}" ng-click="tabChooseStage=1;selectStage=3;plotProgressDashboard()">
+				Progress
+			</div>
+			
+		</div>
+		<div id="dash-mid-content">
+			<div id="dash-empty" class="dash-content hide" ng-class="{'hide':selectStage!=0}">
+				<div class="main-msg">
+					Take your first test!
+				</div>
+				<button class="btn-positive" ng-click="startTest()">
+					Start a test!
+				</button>
+			</div>
+			<div id="dash-assessment" class="dash-content" ng-class="{'hide':selectStage!=1}">
+				<div class="score-circles h">
+					<div class="result-date">{{testScoresTimeArray[0][0]}}</div>
+					<div class="circles-total">						
+						<div class="circle" id="circle-outer"></div>
+						<div class="circle dashboard-result" id="circle-inner"></div>																		
+						<p>
+							My FluentIQ
+						</p>
+					</div>
+					<div class="whole_span">
+						<div class="circles-sub">
+							<div class="circle" id="circle-understood"></div>
+							<p>
+								Speaking
+							</p>
+						</div>			
+						<div class="circles-sub">
+							<div class="circle" id="circle-understanding"></div>
+							<p>
+								Listening
+							</p>
+						</div>
+					</div>
+				</div>				
+
+				
+				<div class="score-summaries" >
+					<div class="score-summary" ng-repeat="subscore in SubScores">
+						<div class="resultlabel">
+							{{headingNames[$index]}}
+						</div>
+						<div class="meter">
+							<img ng-src="images/small/{{subscore[0].scoreProgressFile}}"/>
+							<!-- <span ng-repeat="val in subscore" ng-class="{'active':val.active==1}"></span> -->
+						</div>
+					</div>					
+				</div>
+
+			</div>
+			<div id="dash-empty" class="dash-content" ng-class="{'hide':selectStage!=2}">
+				<div class="main-msg">
+					Please take another test to see yourself improve.
+				</div>
+				<button class="btn-positive" ng-click="startTest()">
+					Start a test!
+				</button>
+			</div>
+			<div id="dash-progress" class="dash-content" ng-class="{'hide':selectStage!=3}">
+				<canvas id="myChartWithDates"></canvas>
+				<ul id="ChartLegend">
+					<li><span class="fluentIQ-legend"></span>FluentIQ</li>
+					<li><span class="speak-legend"></span>speaking</li>
+					<li><span class="listen-legend"></span>listening</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+	<div id="dash-bottom" class="dashboard-content">
+		<table id="assessment_table">
+			<tr>
+				<th>Latest Tests</th><th>FluentIQ</th><th>Speaking</th><th>Listening</th>
+			</tr>
+			<tr ng-repeat="val in testScoresTimeArray" ng-click="openReport($index)">
+				<td><a>{{val[0]}}</a></td><td>{{val[1]}}</td><td>{{val[2]}}</td><td>{{val[3]}}</td>
+			</tr>
+			<tr>
+				<td colspan="5" class="view_more hide"><a>+ VIEW MORE</a></td>
+			</tr>
+		</table>
+	</div>
+</section>

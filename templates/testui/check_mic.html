@@ -1,0 +1,199 @@
+﻿<section role="main">
+	<div>
+		<h1 class="icon icon-audio text-center">Microphone Check</h1>
+		<p>
+			We need to make sure your microphone is working properly.
+		</p>
+
+		<p id="insnStartRecordMic" class="instructions">
+			Start recording and speak into your microphone for 5 seconds
+		</p>
+		<p id="insnListenRecordMic" class="instructions hide">
+			Now play back your recording.<br>Can you hear yourself OK?
+		</p>
+
+		<div id="miccheckrecord" class="recorder">
+			<span id="timertext" class="timer ">0:00</span>
+			<div class="controls">  
+				<span id="startRecordFS" class="record icon icon-record-microphone" title="Record" onclick="toggleRecording()">Record</span>
+				<span id="recordingFS" class="stop icon icon-record-microphone hide" title="Stop">Stop</span>
+				
+			</div>
+			<div class="message hide">
+				Keep speaking
+			</div>
+		</div>
+
+		<div class="player no-js" id="miccheckplay" playCallBack="enableYesNoHearMicButtons" >
+			<div class="controls">
+				<span class="play control" title="Play">Play</span>
+				<span class="pause control hide" title="Pause">Pause</span>
+			</div>
+			<div class="progress-player">
+				<progress value="0" max="100">
+					0%
+				</progress>
+				<span class="time curTime">0:00</span>
+				<span class="time remainTime">0:00</span>
+			</div>
+			<!--
+			<audio preload controls id="playbackrecord">				
+				<source src="testdata/testsound.mp3" type="audio/mpeg" />
+			</audio>
+			-->
+		</div>
+		<div id="miccheckyesno" class="confirmation-buttons hide">
+			<button class="btn-negative disabled" id="cantHearMyRecord" onclick="showSoundCantRecord()">
+				Poor or no sound
+			</button>
+			<button class="btn-positive disabled" id="canHearMyRecord" onclick="nextButton()" >
+				Yes!
+			</button>
+		</div>
+
+		<nav>
+			<ul>
+				<li>
+					<!--
+					<a href="#" class="btn btn-prev">Back</a>
+					-->
+				</li>
+				<li>
+					<a href="#" class="btn btn-next hide">Next</a>
+				</li>
+			</ul>
+		</nav>
+
+		<div class="test-progress divider">
+			<ol class="steps">
+				<li class="done">
+					x
+				</li>
+				<li class="not-done">
+					x
+				</li>
+				<li class="not-done">
+					x
+				</li>
+				<li class="not-done">
+					x
+				</li>								
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="finish">
+					*
+				</li>
+				<span>Results</span>
+			</ol>
+		</div>
+
+		<div id="allowMicrophone" class="modal-dialog-whole">
+			<div>
+				<h1 class="icon icon-allow-microphone">Please allow your microphone.</h1>
+				<p>
+					You should see a pop-up asking you to allow or block the microphone. Please click 'Allow'.
+				</p>
+				<p>
+					Click here if you do not see the pop-up or your need help with enabling your microphone.
+				</p>
+				<a href="#close" title="OK" class="btn btn-large btn-positive">OK</a>
+			</div>
+		</div>
+
+		<div id="microphoneDisabled" class="modal-dialog-whole">
+			<div>
+				<h1 class="icon icon-no-microphone">Your microphone is disabled.</h1>
+				<p>
+					You must have your microphone enabled to use FluentIQ
+				</p>
+				<h1>How to enable your microphone</h1>
+				<ol>
+					<li>
+						Click the disabled media button <img src="images/media-disabled.svg" alt="Media disabled icon" /> on the right of the Chrome address bar.
+					</li>
+					<li>
+						Select Always allow https://app.fluentiq.com to access your microphone
+					</li>
+					<li>
+						Click Done
+					</li>
+				</ol>
+				<a href="#close" title="OK" class="btn btn-large btn-positive">OK</a>
+			</div>
+		</div>
+
+		<div id="microphoneEnabled" class="modal-dialog-whole">
+			<div>
+				<h1 class="icon icon-microphone">Great, your microphone is now enabled.</h1>
+				<p>
+					Click the Next button to return to the test.
+				</p>
+				<a href="#close" title="Next" class="btn btn-large btn-positive">Next</a>
+			</div>
+		</div>
+
+		<div id="noSoundRecorded" class="modal-dialog-whole">
+			<div>
+				<h1 class="icon icon-allow-microphone">No sound was recorded?</h1>
+				<p>
+					The microphone on your computer or headset may be muted. If you are using a headset check the mute button is not activated. If you are using the microphone on your computer or webcam then check the microphone settings in your system preferences.
+				</p>
+				<h1 class="icon icon-audio-simple">Sound recording is poor quality or noisy?</h1>
+				<p>
+					This is usually due to recording in a noisy place or because your sound card is not recording very well.
+				</p>
+				<ol>
+					<li>
+						<p>
+							Try finding a quieter place and retry.
+						</p>
+					</li>
+					<li>
+						<p>
+							Try using the Chrome browser on your Android phone if you have one (sorry iPhone is not supported yet).
+						</p>
+					</li>
+				</ol>
+				<a href="#close" title="OK" class="btn btn-large btn-positive">OK</a>
+			</div>
+		</div>
+
+		<div id="cantHearSound" class="modal-dialog-whole">
+			<div>
+				<h1 class="icon icon-no-sound">Can't hear any sound?</h1>
+				<p>
+					The speakers ony our computer or headset may be muted or turned down low. Please check your speaker settings and try again.
+				</p>
+				<a href="#close" title="OK" class="btn btn-large btn-positive">OK</a>
+			</div>
+		</div>
+	</div>
+</section>

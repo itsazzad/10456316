@@ -1,0 +1,96 @@
+﻿<section role="main">
+	<div>
+		<div id="timer">
+			<svg viewbox="0 0 250 250">
+				<circle id="ccl-outer" class="outer" cx="125" cy="125" r="125" />
+				<circle class="inner" cx="125" cy="125" r="100" />
+				<circle id="ccl-start"  class="start" cx="125" cy="125" r="79" />
+				<path class="loader" transform="translate(125, 125)"/>
+			</svg>
+			<p>
+				<span class="seconds">60s</span> Remaining
+			</p>
+		</div>
+		<h1 class="text-center">Record yourself reading the following paragraph.</h1>
+
+		<div class="recorder">
+			<!-- <span class="timer active">0:00</span>  -->
+			<div class="controls">
+				<span id="recordImageSpan" class="record icon icon-microphone" title="Record" onclick="recordClickedReadAloud(this)">Record</span>
+				<!-- <span class="stop icon icon-record-stop hide" title="Stop">Stop</span>  original one -->
+
+			</div>
+			<div class="message" id="countdownText">
+				Recording begins in 5 ...
+			</div>
+		</div>
+
+		<div class="sub-section">
+			<div  id="testcontent">  
+				<p id="dictationtext">Loading ... </p> 
+			</div>
+		</div>
+
+
+
+		<nav>
+			<ul>
+				<li></li>
+				<li>
+					<button type="submit" id="nextReadAloud" class="btn btn-next disabled" onclick="nextButton(this)" name="submit">Next</button>
+				</li>
+			</ul>
+		</nav>
+
+		<div class="test-progress divider">
+			<ol class="steps">
+				<li class="done">
+					x
+				</li>
+				<li class="done">
+					x
+				</li>
+				<li class="not-done">
+					x
+				</li>
+				<li class="not-done">
+					x
+				</li>								
+				<li class="not-done">
+					x
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="finish">
+					*
+				</li>
+				<span>Results</span>
+			</ol>
+		</div>
+	</div>
+</section>

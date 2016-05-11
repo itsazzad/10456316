@@ -1,0 +1,161 @@
+<div id="main">
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script type="text/javascript" src="js/common/jquery.gauge.js"></script>   
+	<script type="text/javascript" src="js/common/custom.js"></script>
+	
+	
+<div class="layout">
+<!-- main-section -->
+<!-- Change the text to be understanding others  being understood -->
+	<section class="main-section my-result">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-sm-8">
+					<div class="left">
+						<h3>My FluentIQ</h3>
+						<div class="score-new">
+							<div class="left-side">
+								<canvas id="gauge1" width="140" height="125"></canvas>
+								<h2>FluentIQ Score</h2>
+							</div>
+							<div class="right-side">
+								<h4>Being Understood</h4>
+								<div class="progress orange">
+									<div class="progress-bar" id="speakingResultBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" width="0">
+										<span class="sr-only">20% Complete</span>
+									</div>
+								</div>
+								<h4>Understanding Others</h4>
+								<div class="progress blue">
+									<div class="progress-bar" id="understandingResultBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" width="0">
+										<span class="sr-only">20% Complete</span>
+									</div>
+								</div>
+								
+							</div>
+
+						</div>						
+<!-- NEW SECTION FOR FEEDBACK BREAKDOWN -->
+						<div class="score-new" id="detailedNew">
+							<ol id="feedback-breakdown">
+								<li>
+									<div class="feedback-title">Pronunciation</div>
+									<ul class="feedback-bars">
+										<li></li><li></li><li></li><li></li>
+									</ul>
+								</li>
+								<li>
+									<div class="feedback-title">Intonation</div>
+									<ul class="feedback-bars">
+										<li></li><li></li><li></li><li></li>
+									</ul>
+								</li>
+								<li>
+									<div class="feedback-title">Pauses</div>
+									<ul class="feedback-bars">
+										<li></li><li></li><li></li><li></li>
+									</ul>
+								</li>
+								<li>
+									<div class="feedback-title">Speed</div>
+									<ul class="feedback-bars">
+										<li></li><li></li><li></li><li></li>
+									</ul>
+								</li>
+								<li>
+									<div class="feedback-title">Vocabulary Mastery</div>
+									<ul class="feedback-bars">
+										<li></li><li></li><li></li><li></li>
+									</ul>
+								</li>
+								<li>
+									<div class="feedback-title">Range of Vocabulary</div>
+									<ul class="feedback-bars">
+										<li></li><li></li><li></li><li></li>
+									</ul>
+								</li>
+								<li>
+									<div class="feedback-title">Grammar Mastery</div>
+									<ul class="feedback-bars">
+										<li></li><li></li><li></li><li></li>
+									</ul>
+								</li>
+								<li>
+									<div class="feedback-title">Sentence Structure</div>
+									<ul class="feedback-bars">
+										<li></li><li></li><li></li><li></li>
+									</ul>
+								</li>
+								<li>
+									<div class="feedback-title">Comprehension</div>
+									<ul class="feedback-bars">
+										<li></li><li></li><li></li><li></li>
+									</ul>
+								</li>
+								<li>
+									<div class="feedback-title">Transcription</div>
+									<ul class="feedback-bars">
+										<li></li><li></li><li></li><li></li>
+									</ul>
+								</li>
+							</ol>
+						</div>
+<!-- NEW SECTION FOR FEEDBACK BREAKDOWN ENDS -->
+						
+						
+						<div class="about">
+							<h3>About My Score</h3>
+							<p>Your FluentIQ score of <span id="scoreTotalText">0.0</span> <span id="feedbackOverallText">means that you have an average level of english communication.
+							You could get by with travelling in an English speaking country. You are not yet at a level that would pass IELTS or TOEFL.</span></p>
+
+							<p><span id="feedbackUnderstandText">Your ability to understand other people speaking English is below average which means you 
+							would struggle in holding a meaningful conversation in English.</span></p>
+							
+							<p><span id="feedbackSpokenText">Your spoken English is at a level where most English speakers would be able to understand 
+							you with quite easily.<span></span></p>							
+							
+							<p id="dictRecording">Your dictation recording</p>
+							<div id="recordingDictation"></div><br>
+							<p id="FSRecording">Your free speech recording</p>
+							<div id="recordingFS"></div><br><br>
+							
+							
+							<h3>Was this helpful?</h3>
+							<p>We hope you found this helpful. If you would like to give us feedback or your ideas for 
+							features we can add to FluentIQ than we love to hear from you.&nbsp;&nbsp;<a href="mailto:info@fluentiq.com">Give Your Feedback</a></p>
+						</div>
+						<h4 class="thank">Thanks For Using FluentIQ</h4>
+					</div>
+				</div>
+				<!--
+				<div class="col-md-4 col-sm-4">
+					<div class="right">
+						<h3>Get Your FREE T-Shirt</h3>
+						<div class="ad text-center">
+							<img src="images/oldui/ads.png" alt="ads"/>
+						</div>
+						<p>Take our 5 minute survey and you could 
+win this gorgeous tee.</p>
+						<div class="text-center">
+							<button type="submit" class="btn btn-primary text-uppercase">do the survey</button>
+						</div>
+					</div>
+				</div>
+				-->
+			</div>
+		</div>
+	</section>
+<!-- side-menu (mobile) -->
+	<div id="wrapper">
+		<div id="sidebar-wrapper">
+			<ul class="sidebar-nav">
+				<li><a href="#"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-user"></span>Account</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-off"></span>Sign Out</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-cog"></span>Setting</a></li>
+			</ul>
+		</div>
+    </div>
+</div>
+<div id="main">

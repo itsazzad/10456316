@@ -1,0 +1,99 @@
+﻿<section role="main">
+	<div>
+		<h1 class="icon icon-audio text-center">Speaker Check</h1>
+		<p>
+			We need to make sure your speakers are working properly.
+		</p>
+		<p class="instructions">
+			Play the audio clip. Can you hear a person talking?
+		</p>
+
+		<div class="player no-js" id="testSpeaker" playCallBack="enableYesNoSpeakerButtons">
+			<div class="controls">
+				<span class="play control" title="Play">Play</span>
+				<span class="pause control hide" title="Pause">Pause</span>
+			</div>
+			<div class="progress-player">
+				<progress value="0" max="100">
+					0%
+				</progress>
+				<span class="time curTime">loading</span>
+				<span class="time remainTime">loading</span>
+			</div>
+			<!--
+			<audio preload controls>
+				<source src="testdata/testsound.mp3" type="audio/mpeg" />
+			</audio>
+			-->
+		</div>
+		
+		<div class="confirmation-buttons">
+			<button class="btn-negative disabled" id="noSpeaker" onclick="showSoundCantHear()">
+				No
+			</button>
+			<button class="btn-positive disabled" id="yesSpeaker" onclick="nextButton(this)" name="submit">
+				Yes!
+			</button>
+		</div>
+
+		<nav>
+			<ul>
+				<li>
+					<!-- <a href="#" class="btn btn-next">Next</a> -->
+					<button type="submit" class="btn btn-next hidden" onclick="nextButton(this)" name="submit">Next</button>					
+				</li>
+			</ul>
+		</nav>
+
+		<div class="test-progress divider">
+			<ol class="steps">
+				<li class="not-done">
+					x
+				</li>
+				<li class="not-done">
+					x
+				</li>
+				<li class="not-done">
+					x
+				</li>								
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="not-done">
+					o
+				</li>
+				<li class="finish">
+					*
+				</li>
+				<span>Results</span>
+			</ol>
+		</div>
+	</div>
+</section>

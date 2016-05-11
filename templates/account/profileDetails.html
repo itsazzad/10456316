@@ -1,0 +1,61 @@
+<section role="main">
+	<div id="profileDetailsDiv">
+		<h1>My Profile</h1>
+
+		<h2>Personal details</h2>
+		<form id="profileDetailsForm" ng-submit="updateProfileAng()" name="profile_details">
+			<div class="form-group">
+				<label>First name</label>
+				<input type="firstName"  ng-model="firstNameAng" placeholder="First name"/>
+			</div>
+			<div class="form-group">
+				<label>Family name</label>
+				<input type="familyName" ng-model="familyNameAng" placeholder="Family name"/>
+			</div>
+			<div class="form-group">
+				<label>Email address</label>
+				<input type="email" ng-model="emailAng" placeholder="Email address"/>
+			</div>			
+			<div class="form-group">
+				<label>Your native language</label>
+				<input type="nativeLanguage" ng-model="nativeAng" placeholder="Language"/>
+			</div>	
+
+			<a id="delt-account" href="javascript:deleteAccountShow()">Delete account</a><br><br>
+								
+			<button type="submit" class="btn-positive" name="submit" value="start">
+				Save changes
+			</button>
+		</form>	
+		
+		<h2>Billing</h2>
+		<form id="payForm" ng-submit="goToPaid()" name="profile_details">
+ 			<div class="form-group">
+				<label>Plan</label>
+				<div id="account-type">
+					<div id="account-type-text">You are on a free trial</div>
+					<button type="submit" onclick="goToPaid()" class="btn-positive" name="submit" value="start" ng-class="{'hide':showUpgrade==0}">
+						Upgrade to paid account
+					</button>
+				</div>
+			</div>
+		</form>
+
+		<h2>Password</h2> 		
+ 		<form id="profileDetailsChangePW" ng-submit="changePWAng()" name="change_pw">
+ 			<div class="form-group">
+				<label>Old password</label>
+				<input type="password" ng-model="origPWAng" placeholder="Old Password"/>
+			</div>
+			<div class="form-group">
+				<label>New password</label>
+				<input type="password" ng-model="newPWAng" placeholder="New Password"/>
+			</div>
+			<button type="submit" class="btn-positive" name="submit" value="start">
+				Save changes
+			</button>			
+		</form>
+ 
+	</div>
+	
+</section>
