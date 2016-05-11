@@ -1,6 +1,6 @@
 ﻿<section role="main">
 	<div>
-		<h1 class="text-center">Record yourself answering a question.</h1>
+		<h1 class="text-center">{{translations.assessP2QRecord}}</h1>
 
 		<div class="recorder">
 			<span id="recordingTimerText" class="timer">0:00</span>
@@ -9,7 +9,7 @@
 				<span id="recordingFS" class="stop icon icon-record-microphone hide" title="Stop"></span>
 			</div>
 			<div class="message" id="countdownText">
-				Show the question to begin
+				{{translations.assessP2QShowBegin}}
 			</div>
 		</div>
 
@@ -18,7 +18,7 @@
 				<p id="testtitle">Loading ...</p>
 			</div>
 			<div id="revealButtonDiv" class="free-speech-button">			
-				<button type="submit" id="revealButton" class="btn btn-next"  onclick="showButton(this)" name="submit">Show question</button>
+				<button type="submit" id="revealButton" class="btn btn-next"  onclick="showButton(this)" name="submit">{{translations.assessP2QShow}}</button>
 			</div>
 		</div>
 

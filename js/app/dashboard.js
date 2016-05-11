@@ -82,15 +82,15 @@ function($scope, $http,$location) {
 		$http(req).then(function successCallback(response) {
 			var temp = response.data.data;
 			var dataRet = [{
-				label : 'Overall score',
+				label : translationsGlobal.messagedOverallScore,
 				strokeColor : '#4FAB67',
 				data : []
 			}, {
-				label : 'Speaking',
+				label : translationsGlobal.messagedSpeaking,
 				strokeColor : '#4DAFD9',
 				data : []
 			}, {
-				label : 'Listening',
+				label : translationsGlobal.messagedListening,
 				strokeColor : '#F4C271',
 				data : []
 			}];

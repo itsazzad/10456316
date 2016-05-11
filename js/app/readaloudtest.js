@@ -37,7 +37,7 @@
 			$("#recordImageSpan").removeClass("icon-record-microphone");
 			//$("#recordImageSpan").removeClass("icon-record-stop");
 						
-			$("#countdownText").text("Well done. Click 'Next' to continue");			
+			$("#countdownText").text(translationsGlobal.assessP1QWellDone);			
 			isRecording = 0;		
 		}
 	};
@@ -67,7 +67,7 @@
 		if (CountDownStartTimer > 0) {
 			window.setTimeout("TickCountDownToStart()", tick1SecMs);
 		} else {
-			$("#countdownText").text("When you've finished reading, stop the recording.");
+			$("#countdownText").text(translationsGlobal.assessP1QWhen);
 			$("#recordImageSpan").removeClass("icon-microphone");
 			$("#recordImageSpan").removeClass("record");
 			$("#recordImageSpan").addClass("stop");

@@ -1,31 +1,31 @@
 <section role="main">
 	<div ng-class="{'hide':hasDeleted!=0}">
-		<h1 class="icon icon-email text-center">Really delete account?</h1>
+		<h1 class="icon icon-email text-center">{{translations.myProReallyD}}</h1>
  		<form id="deleteAccount" ng-submit="deleteAccountAng()" name="delete_account">
  			<div class="form-group">
-				<label>Please enter your password</label>
-				<input type="password" ng-model="passwordDelete" placeholder="Password"/>
+				<label>{{translations.myProDeleteEnter}}</label>
+				<input type="password" ng-model="passwordDelete" placeholder={{translations.myProDeletPW}}>
 			</div>			
  			<div class="form-group">
-				<label>Why are you leaving?</label>
+				<label>{{translations.myProDeleteWhy}}</label>
 				<input type="text" ng-model="resonLeave" />
 			</div>
 			<div class="form-buttons">
 				<button  onclick="goBackFromDelete();" type="submit" class="btn-negative" name="submit" value="start">
-					Cancel
+					{{translations.myProDeleteCancel}}
 				</button>			
 				<button type="submit" class="btn-positive" name="submit" value="start">
-					Delete
+					{{translations.myProAccountDel}}
 				</button>
 			</div>			
 		</form> 
 	</div>
 
 	<div ng-class="{'hide':hasDeleted==0}">
-		<h1 class="icon icon-email text-center">Account deleted</h1>
+		<h1 class="icon icon-email text-center">{{translations.myProAccDel}}</h1>
 		<br>
-		Your account has been deleted.<br><br>
-		All test data will be removed from our systems within 24 hours.
+		{{translations.myProYourAccDel}}<br><br>
+		{{translations.myProTestData}}
 	</div>
 
 	

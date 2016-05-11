@@ -36,7 +36,7 @@
 
 	getResults = function($scope, $http) {
 
-		$scope.headingNames = ['1. Pronunciation', '2. Intonation', '3. Pauses', '4. Speed', '5. Vocabulary Mastery', '6. Range of Vocabulary', '7. Grammar Mastery', '8. Sentence Structure', '9. Listening Comprehension', '10. Listening Accuracy'];
+		$scope.headingNames = [translationsGlobal.messagedSubAreasNamed];
 		$scope.overallscore = 0.0;
 		$scope.speakingscore = 0.0;
 		$scope.listeningscore = 0.0;
@@ -72,16 +72,16 @@
 		$scope.freeSpeechQuestion = [];
 
 		$scope.readAloudTitle = {
-			title : 'My read aloud recording'
+			title : translationsGlobal.messagedReadAloud
 		};
 		$scope.sampleReadAloudTitle = {
-			title : 'Sample recording'
+			title : translationsGlobal.messagedSampleRecord
 		};
 		$scope.freeSpeechTitle = {
-			title : 'My free speech recording'
+			title : translationsGlobal.messagedFSRecord
 		};
 		$scope.sampleFreeSpeechTitle = {
-			title : 'Example answer'
+			title : translationsGlobal.messagedExampleAnswer
 		};
 
 		$scope.transcriptions = [];
@@ -143,7 +143,7 @@
 			// 0 is the code for no sound, give error message in this case.
 			if ((isNaN(freeSpeaking)) || (isNaN(dictationSpeaking)) || (isNaN(transcriptionUnderstanding)) || (isNaN(multiUnderstanding))) {
 				isTestFail = 1;
-				bootbox.alert("Sorry but there are no test results at this page. Please contact support if you feel something has gone wrong.", function() {
+				bootbox.alert(translationsGlobal.messagedNoResultError, function() {
 				});
 				freeSpeaking = 0;
 				dictationSpeaking = 0;
@@ -232,17 +232,17 @@
 						var lineStruct = [];
 						var descriptionString;
 						descriptionString = getDescrString(descr, [i + 4, 1]);
-						$scope.subScoresLevel[i] = "beginner";
+						$scope.subScoresLevel[i] = translationsGlobal.messagedBeginner;
 						if (scoreVec[i] > 2) {
-							$scope.subScoresLevel[i] = "elementary";
+							$scope.subScoresLevel[i] = translationsGlobal.messagedElementary;
 							descriptionString = getDescrString(descr, [i + 4, 2]);
 						}
 						if (scoreVec[i] > 5) {
-							$scope.subScoresLevel[i] = "intermediate";
+							$scope.subScoresLevel[i] = translationsGlobal.messagedIntermediate;
 							descriptionString = getDescrString(descr, [i + 4, 3]);
 						}
 						if (scoreVec[i] > 8) {
-							$scope.subScoresLevel[i] = "advanced";
+							$scope.subScoresLevel[i] = translationsGlobal.messagedAdvanced;
 							descriptionString = getDescrString(descr, [i + 4, 4]);
 						}
 						if (i < 8)
@@ -422,7 +422,7 @@
 				});
 				if (i == response.data.data.length - 1) {
 					//It seems that you understood (the main ideas, the explicit detail, the implicit information, and the speakers’ purpose) well, but in the future you should pay more attention to (the main ideas, the explicit detail, the implicit information, and the speakers’ purpose).
-					var types = ["the main ideas", "the explicit detail", "the implicit information", "the speakers' purpose"];
+					var types = [translationsGlobal.messagedMainIdea, translationsGlobal.messagedExplicitDetail, translationsGlobal.messagedImplicitInfo, translationsGlobal.messagedSpeakerPurpose];
 					var isCorr = createArray(types.length);
 					for (var j = 0; j < types.length; j++) {
 						isCorr[j] = 1;
@@ -462,7 +462,7 @@
 						continue;
 					}
 					if (totalCorrect == response.data.data.length) {
-						$scope.comprehensionDescription = "Well done! You got all the answers correct.";
+						$scope.comprehensionDescription = translationsGlobal.messagedWellDoneX;
 						continue;
 					}
 				}

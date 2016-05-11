@@ -4,7 +4,7 @@
 		</button> -->
 	<div id="dash-top" class="dashboard-content">
 		<div>
-			<h1>Hi {{username}}</h1>
+			<h1>{{translations.daHi}}</h1>
 		</div>
 		<button class="btn-positive" ng-click="startTest()">
 			Start a test!
@@ -14,18 +14,18 @@
 	<div id="dash-mid" class="dashboard-content">
 		<div id="dash-mid-menu">
 			<div ng-class="{'selected':tabChooseStage==0}" ng-click="tabChooseStage=0;selectStage=1;plotAssessmentDashboard();destroyGraph()">
-				Latest Assessment
+				{{translations.daLateAssess}}
 			</div>
 			
 			<div  ng-class="{'selected':tabChooseStage==1}" ng-click="tabChooseStage=1;selectStage=3;plotProgressDashboard()">
-				Progress
+				{{translations.daProgress}}
 			</div>
 			
 		</div>
 		<div id="dash-mid-content">
 			<div id="dash-empty" class="dash-content hide" ng-class="{'hide':selectStage!=0}">
 				<div class="main-msg">
-					Take your first test!
+					{{translations.daTakeTest}}
 				</div>
 				<button class="btn-positive" ng-click="startTest()">
 					Start a test!
@@ -73,10 +73,10 @@
 			</div>
 			<div id="dash-empty" class="dash-content" ng-class="{'hide':selectStage!=2}">
 				<div class="main-msg">
-					Please take another test to see yourself improve.
+					{{translations.daTakeAnother}}
 				</div>
 				<button class="btn-positive" ng-click="startTest()">
-					Start a test!
+					{{translations.daStartTest}}
 				</button>
 			</div>
 			<div id="dash-progress" class="dash-content" ng-class="{'hide':selectStage!=3}">
@@ -93,7 +93,7 @@
 	<div id="dash-bottom" class="dashboard-content">
 		<table id="assessment_table">
 			<tr>
-				<th>Latest Tests</th><th>FluentIQ</th><th>Speaking</th><th>Listening</th>
+				<th>{{translations.daLatestTests}}</th><th>FluentIQ</th><th>{{translations.daSpeaking}}</th><th>{{translations.daListening}}</th>
 			</tr>
 			<tr ng-repeat="val in testScoresTimeArray" ng-click="openReport($index)">
 				<td><a>{{val[0]}}</a></td><td>{{val[1]}}</td><td>{{val[2]}}</td><td>{{val[3]}}</td>

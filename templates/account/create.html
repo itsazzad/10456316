@@ -1,21 +1,21 @@
 ﻿<section role="main">
 	<div>
-		<h1 class="icon icon-email text-center" ng-class="{'hide':createAccountDone!=0}">Create an account</h1>
-		<h1 class="icon icon-email text-center" ng-class="{'hide':createAccountDone==0}">Check your email!</h1>
+		<h1 class="icon icon-email text-center" ng-class="{'hide':createAccountDone!=0}">{{translations.caS1}}</h1>
+		<h1 class="icon icon-email text-center" ng-class="{'hide':createAccountDone==0}">{{translations.caS1Check}}</h1>
 		
 		<form id="createForm" ng-submit="createAccountAng()" name="get_results" ng-class="{'hide':createAccountDone!=0}">
 			<div class="form-group">
-				<label>Your email</label>
-				<input type="email" name="email" placeholder="Email address"/>
+				<label>{{translations.caS1Create}}</label>
+				<input type="email" name="email" placeholder={{translations.loginEmail}}>
 			</div>
 
 			<button type="submit" class="btn-positive" name="submit" value="start">
-				Create account
+				{{translations.caS1Email}}
 			</button>
 			<br><br>
-			<a  href="javascript: curstage = userUIEnum.LOGIN;document.getElementById('login').click();">Login if you already have an account</a>
+			<a  href="javascript: curstage = userUIEnum.LOGIN;document.getElementById('login').click();">{{translations.caS1Login}}</a>
 		</form>	
- 		<div id="checkYourEmail" ng-class="{'hide':createAccountDone==0}">We've sent and email to {{accountEmail}} with a link to complete sign-up.</div> 
+ 		<div id="checkYourEmail" ng-class="{'hide':createAccountDone==0}">{{translations.caS1WeSent}}</div> 
 	</div>
 	
 </section>

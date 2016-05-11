@@ -12,35 +12,35 @@
 				<input type="password" name="password" placeholder={{translations.loginPassword}}>
 			</div>
 			<button type="submit" class="btn-positive" name="submit" value="start">
-				Login
+				{{translations.loginLogin}}
 			</button>
 			<br><br>
 			
-			<a href="" ng-click="showForgotPWAng()">Forgot password?</a><br>
-			<a  href="javascript: curstage = userUIEnum.CREATE_ACCOUNT;document.getElementById('createAccount').click();">Create account</a>
-			<!-- <a href="JavaScript:curstage=userUIEnum.RESET_PW;nextButton()">Forgot password?</a> -->
+			<a href="" ng-click="showForgotPWAng()">{{translations.loginForgot}}</a><br>
+			<a  href="javascript: curstage = userUIEnum.CREATE_ACCOUNT;document.getElementById('createAccount').click();">{{translations.loginCreate}}</a>
+			<!-- <a href="JavaScript:curstage=userUIEnum.RESET_PW;nextButton()">{{translations.loginForgot}}</a> -->
 		</form>	 
 	</div>
 	<div ng-class="{'hide':isForgottten!=1}">
-		<h1 class="icon icon-email text-center">Forgot your password?</h1>
+		<h1 class="icon icon-email text-center">{{translations.fpFP}}</h1>
 		<form id="sendForm" name="" ng-submit="sendForgotPWEmailAng()">  
-			We'll send instructions on how to reset your password.<br><br> 
+			{{translations.fpWeSend}}<br><br> 
 			<div class="form-group">
 				<input type="email" name="email" placeholder={{translations.loginEmail}}>
 			</div>
 			<button type="submit" class="btn-positive" name="submit" value="start">
-				Send instructions
+				{{translations.fmSendInsn}}
 			</button><br><br>
 			<a href="" ng-click="showLoginAng()">{{translations.loginLogin}}</a><br>			
 		</form>		
 	</div>
 	
 	<div ng-class="{'hide':isForgottten!=2}">
-		<h1 class="icon icon-email text-center">Forgot your password?</h1>
+		<h1 class="icon icon-email text-center">{{translations.fpFP}}</h1>
 		<form id="sendFormDone" onSubmit="" name="">
 		If there is an account for {{emailInput}}, we'll send them instructions on how to reset their password.<br><br>
-			<a href="" ng-click="showLoginAng()">Login</a><br>			
-			<a  href="javascript:curstage = userUIEnum.CREATE_ACCOUNT;document.getElementById('createAccount').click();">Create account</a>
+			<a href="" ng-click="showLoginAng()">{{translations.loginLogin}}</a><br>			
+			<a  href="javascript:curstage = userUIEnum.CREATE_ACCOUNT;document.getElementById('createAccount').click();">{{translations.loginCreate}}</a>
 		</form>		
 	</div>
 </section>

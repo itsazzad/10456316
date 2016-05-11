@@ -4,42 +4,42 @@
 		<section> -->
 			<section role="main">
 				<div>
-					<h1 class="icon icon-clock text-center">Let's assess your English!</h1>
+					<h1 class="icon icon-clock text-center">{{translations.assessLets}}</h1>
 					<p class="test-areas">
-						FluentIQ assesses your English communication skills. It takes about 10 to 15 minutes and is split into 4 areas:
+						{{translations.assessFIQ}}
 					</p>
 					<ul class="test-areas">
 						<li class="icon icon-speech">
-							<h2>Speech Sounds</h2>
+							<h2>{{translations.assessSpeechS}}</h2>
 							<p>
-								Record yourself reading a short paragraph.
+								{{translations.assessRecordpara}}
 							</p>
 						</li>
 						<li class="icon icon-conversation">
-							<h2>Fluency</h2>
+							<h2>{{translations.assessFluency}}</h2>
 							<p>
-								Record yourself speaking on a given topic.
+								{{translations.assessRecordFS}}
 							</p>
 						</li>						
 						<li class="icon icon-understanding">
-							<h2>Comprehension</h2>
+							<h2>{{translations.assessComprehension}}</h2>
 							<p>
-								Listen to audio clips of people speaking and answer some multiple choice questions.
+								{{translations.assessListAudio}}
 							</p>
 						</li>
 						<li class="icon icon-listening">
-							<h2>Listening Accuracy</h2>
+							<h2>{{translations.assessListAccuracy}}</h2>
 							<p>
-								Listen to audio clips of people speaking and type what you hear.
+								{{translations.assessListAudioType}}
 							</p>
 						</li>						
 					</ul>
-					<button type="submit" id="start-button" class="btn btn-next" onclick="nextButton(this)" name="submit" value="start">Get Started</button>
+					<button type="submit" id="start-button" class="btn btn-next" onclick="nextButton(this)" name="submit" value="start">{{translations.assessGetStarted}}</button>
 				</div>
 				<!--
 				<form onSubmit="JavaScript:continueFormNew()" name="get_started">
 					<input type="email" name="email" placeholder="Email address for results" />
-					<input type="submit" name="submit" value="Get started" />
+					<input type="submit" name="submit" value={{translations.assessGetStarted}}
 					
 				</form>
 				-->

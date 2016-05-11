@@ -149,31 +149,28 @@ var isNextEnabled = 1;
 // need this to be extra careful that it can't be clicked twice before the UI updates.
 var hasEnteredEmail = 0;
 
-var soundMessageCantHear = "Firstly check that your speakers are not muted and your volume is not set too low.<br>";
-soundMessageCantHear = soundMessageCantHear + "If that doesn't work, please see more detailed explanations on how to setup your system.<br>";
-soundMessageCantHear = soundMessageCantHear + "For <a href='http://windows.microsoft.com/en-US/windows/no-sound-help#no-sound' target='_blank'>Windows click here</a>";
-soundMessageCantHear = soundMessageCantHear + " or for <a href='https://support.apple.com/en-us/HT203186' target='_blank'>Mac click here</a>";
+var soundMessageCantHear = translationsGlobal.sCModalFirstCheck+"<br>";
+soundMessageCantHear = soundMessageCantHear + translationsGlobal.sCModalIfThat+"<br>";
+soundMessageCantHear = soundMessageCantHear + translations.sCModalWindows;
 
-var soundMessageCantRecord = "Firstly check that your microphone is not muted and your volume is not set too low.<br>";
-soundMessageCantRecord = soundMessageCantRecord + "If that doesn't work or you don't know how to do that, please see more detailed explanations on how to setup your system.<br>";
-soundMessageCantRecord = soundMessageCantRecord + "For <a href='http://www.onlinemictest.com/microphone-settings/windows-7' target='_blank'>Windows click here</a>";
-soundMessageCantRecord = soundMessageCantRecord + " or for <a href='http://www.onlinemictest.com/microphone-settings/mac-os-x' target='_blank'>Mac click here</a>";
-soundMessageCantRecord = soundMessageCantRecord + "<br><br> If you continue to have problems, please contact us at <a href='mailto:info@fluentiq.com?Subject=Recording%20problems' target='_top'>info@fluentiq.com</a> ";
+var soundMessageCantRecord = translationsGlobal.mCModalFirstCheck+"<br>";
+soundMessageCantRecord = soundMessageCantRecord + translationsGlobal.mCModalIfThat+"<br>";
+soundMessageCantRecord = soundMessageCantRecord + translationsGlobal.mCModalWindows;
+soundMessageCantRecord = soundMessageCantRecord + "<br><br> "+translationsGlobal.mCModalIfContinue;
 
-var BROWSER_SUPPORT = "Browser support for this test";
-var ALERT_BROWSER_NOT = "Sorry your browser is not supported for this test. <br/>For Windows desktop: Chrome, Firefox, Opera, and the Windows 10 Edge browser are supported ";
-ALERT_BROWSER_NOT = ALERT_BROWSER_NOT + "but earlier versions of Internet Explorer are not. <br/>For Mac, Chrome is supported. <br/>On mobile, only Chrome for Android is supproted.";
+var BROWSER_SUPPORT = translationsGlobal.messagedBrowserSupport;
+var ALERT_BROWSER_NOT = translationsGlobal.messagedBrowserNoSupport;
 
-var ALERT_RECORDING_NOT = "There is a problem with your sound setup, recording did not start.";
-var ALERT_ENABLE_MIC = "Please enable your microphone - you cannot record until you do so.";
-var ALERT_CANNOT_REC = "You cannot record sound, please enable it, close this page and open it again.";
-var ALERT_MIC_DISABLED = "The microphone is disabled for this site. Please enable it, close this page and open it again.";
-var ALERT_SAY123 = "Click the record button and say 'testing 1 2 3'.";
-var TEXT_NO_SOUND_MIC = "Sorry we heard no sound, is your mic muted? Please check or record again.";
-var TEXT_NOT_GOOD_REC = "Sorry your recording environment is not good enough - please record again or use a different setup.";
-var SOUND_SETUP = "Setting up sound";
-var OK_TEXT = "OK";
-var RETRY_TEXT = "Retry";
+var ALERT_RECORDING_NOT = translationsGlobal.messagedProblemSoundSetup;
+var ALERT_ENABLE_MIC = translationsGlobal.messagedPleaseEnableMic;
+var ALERT_CANNOT_REC = translationsGlobal.messagedCantRecordSound;
+var ALERT_MIC_DISABLED = translationsGlobal.messagedMicDisabled;
+var ALERT_SAY123 = translationsGlobal.messagedClickRecordTest;
+var TEXT_NO_SOUND_MIC = translationsGlobal.messagedNoSoundMic;
+var TEXT_NOT_GOOD_REC = translationsGlobal.messagedRecordNoisy;
+var SOUND_SETUP = translationsGlobal.messagedSetSound;
+var OK_TEXT = translationsGlobal.messagedOK;
+var RETRY_TEXT = translationsGlobal.messagedRetry;
 
 
 var BrowserTypeId = 1;
@@ -208,7 +205,7 @@ function routeChange(event, newUrl, oldUrl) {
 		event.preventDefault();
 		// This prevents the navigation from happening
 		
-		//bootbox.alert("NOTE: The back button is disabled for this site as it will interfere with your test.", function() {
+		//bootbox.alert(translationsGlobal.messagedNote, function() {
 		bootbox.alert(translationsGlobal.messagedNote, function() {
 		});
 	}
@@ -221,7 +218,7 @@ window.onbeforeunload = function() {
 	if ((curstage <= stageEnumTest.GET_RESULTS) && (curstage >= stageEnumTest.READ_ALOUD_INSNS))
 	//if ((curstage <= stageOldEnum.GET_RESULTS_OLD_ASK) && (curstage >= stageOldEnum.READ_ALOUD_OLD))
 			if (hasEnteredEmail == 0)
-				return "You will lose your test results if you leave or refresh the page, are you sure you want to do this?";
+				return translationsGlobal.messagedYouWill;
 };
 
 function browserIsSupported() {
@@ -1081,11 +1078,11 @@ function showPaymentResult(isSucceed){
 	if (isSucceed==1){
 		curstage = userUIEnum.DASHBOARD_ACCOUNT;		
 		document.getElementById('profileDetails').click();
-		showAlertSucceed('Congratulations your account is now active!');
+		showAlertSucceed(translationsGlobal.messagedCongrat);
 		ispaid = 't';
 	}else{
 		
-		curstage = userUIEnum.DASHBOARD_ACCshowAlertFail('Payment failed, please try again!');OUNT;
+		curstage = userUIEnum.DASHBOARD_ACCshowAlertFail(translationsGlobal.messagedPWFailed);OUNT;
 		document.getElementById('profileDetails').click();
 		
 	}

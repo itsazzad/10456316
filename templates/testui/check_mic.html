@@ -1,15 +1,15 @@
 ﻿<section role="main">
 	<div>
-		<h1 class="icon icon-audio text-center">Microphone Check</h1>
+		<h1 class="icon icon-audio text-center">{{translations.mCMicCheck}}</h1>
 		<p>
-			We need to make sure your microphone is working properly.
+			{{translations.mCWeNeed}}
 		</p>
 
 		<p id="insnStartRecordMic" class="instructions">
-			Start recording and speak into your microphone for 5 seconds
+			{{translations.mCStartRec}}
 		</p>
 		<p id="insnListenRecordMic" class="instructions hide">
-			Now play back your recording.<br>Can you hear yourself OK?
+			{{translations.mCNowPlay}}<br>{{translations.mCCanHear}}
 		</p>
 
 		<div id="miccheckrecord" class="recorder">
@@ -44,10 +44,10 @@
 		</div>
 		<div id="miccheckyesno" class="confirmation-buttons hide">
 			<button class="btn-negative disabled" id="cantHearMyRecord" onclick="showSoundCantRecord()">
-				Poor or no sound
+				{{translations.mCPoor}}
 			</button>
 			<button class="btn-positive disabled" id="canHearMyRecord" onclick="nextButton()" >
-				Yes!
+				{{translations.mCYes}}
 			</button>
 		</div>
 
@@ -117,7 +117,7 @@
 
 		<div id="allowMicrophone" class="modal-dialog-whole">
 			<div>
-				<h1 class="icon icon-allow-microphone">Please allow your microphone.</h1>
+				<h1 class="icon icon-allow-microphone">{{translations.messagedPleaseAllow}}</h1>
 				<p>
 					You should see a pop-up asking you to allow or block the microphone. Please click 'Allow'.
 				</p>

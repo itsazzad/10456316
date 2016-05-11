@@ -20,7 +20,7 @@
 			jd = $.parseJSON(data);
 			result = jd.data;
 			if (result == "none") {
-				console.log('not logged in');
+				console.log(translationsGlobal.messagedNotLogged);
 				$location.path('login');
 				$scope.isIncorrect = 1;				
 			} else {
@@ -35,7 +35,7 @@
 				randUserId = result[0][5];
 				username =  result[0][6];
 				 			
-				console.log('logged in');
+				console.log(translationsGlobal.messagedLoggedIn);
 				$rootScope.isLoggedIn = 1;
 				if (pathToSuccess.length > 0)	
 					$location.path(pathToSuccess);
@@ -54,7 +54,7 @@
 	};
 	createAccount = function($scope) {
 		if ($("#createForm input").eq(0).val() == ""){
-					bootbox.alert("Please enter an email address.", function() {
+					bootbox.alert(translationsGlobal.messagedPleaseEmail, function() {
 			});
 			return false;
 		}
@@ -105,7 +105,7 @@
 		var newPW2 = $("#resetPWForm input").eq(1).val();
 		if (newPW1 != newPW2){
 			//alert("not matching!");
-			showAlertFail('Passwords do not match');
+			showAlertFail(translationsGlobal.messagedPWNoMatch);
 			return;
 		}
 		var stringSave = "resetpw=1&email=" + email + "&hashed=" + hashedIn + "&passwordnew=" + newPW1;
@@ -135,7 +135,7 @@
 	updateDetailsAccount  = function($scope){						
 		var stringSave = "update=4&email=" + $scope.emailAng + "&username=" + $scope.firstNameAng + "&userfamilyname=" + $scope.familyNameAng + "&native=" + $scope.nativeAng + "&emailOld=" + email;
 		$.post("php/saveemail.php?" + stringSave ,{},function(){
-			showAlertSucceed('Changes saved');
+			showAlertSucceed(translationsGlobal.messagedChangeSave);
 			email = $scope.emailAng;
 		});
 	};
@@ -145,9 +145,9 @@
 		$.post("php/saveemail.php?" + stringSave ,{},function(data){
 			if (data != "success"){
 				//alert('password is incorrect');				
-				showAlertFail('Password is incorrect.')
+				showAlertFail(translationsGlobal.messagedPWIncorrect)
 			}else{
-				showAlertSucceed('Password changed.');
+				showAlertSucceed(translationsGlobal.messagedPWChanged);
 			}
 		});
 				
@@ -205,7 +205,7 @@
 		var stringSave = "update=6&email=" + email + "&password=" + $scope.passwordDelete;		
 		$.post("php/saveemail.php?" + stringSave ,{},function(data){
 			if (data != "success"){
-				alert('password is incorrect');
+				alert(translationsGlobal.messagedPWIncorr);
 			}else{
 				$scope.hasDeleted = 1;
 				$scope.$apply();

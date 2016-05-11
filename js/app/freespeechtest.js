@@ -131,7 +131,7 @@ isTimerActiveFreeSpeech = 1;
 			window.setTimeout("TickCountDownToStartFS()", tick1SecMs);
 		} else {
 			isRecording = 1;
-			$("#countdownText").text("Recording! Keep speaking!");
+			$("#countdownText").text(translationsGlobal.assessP2QKeepSpeaking);
 			$("#startRecordFS").hide();
 			$("#recordingFS").removeClass("hide");
 			$("#recordingTimerText").text("30");
@@ -151,7 +151,7 @@ isTimerActiveFreeSpeech = 1;
 			window.setTimeout("RecordingCountDownFS()", tick1SecMs);
 		} else {
 			isRecording = 0;
-			$("#countdownText").text("Recording complete!");			
+			$("#countdownText").text(translationsGlobal.assessP2QComplete);			
 			$("#recordingFS").hide();
 			$("#startRecordFS").show();		
 			$("#nextFS").removeClass("disabled");			

@@ -16,8 +16,8 @@ setupEmailPage = function(){
 
 updateEmailUI = function(emailIn){
 		
-	var email2Text = "We have just sent a confirmation email to " + emailLanding + ". Please check it is has been received OK. If you don't see it within 5 minutes then please check your spam folder.<br><br>";
-	email2Text = email2Text + "Finally, please add the email team@fluentiq.com to your address book. This will ensure your results get through to you.<br><br>";					 	
+	var email2Text = translationsGlobal.messagedConfirmEmailSent+"<br><br>";
+	email2Text = email2Text + translationsGlobal.messagedFinallyEmail+"<br><br>";					 	
 	$("#emailGetResult").hide();
 	$("#showTerms").hide();
 	
@@ -37,7 +37,7 @@ updateEmailUI = function(emailIn){
 sendEmailData = function () {
 	
 	if ($("#emailAndDetails input").eq(0).val() == ""){
-				bootbox.alert("Please enter an email address.", function() {
+				bootbox.alert(translationsGlobal.messagedPleaseEmail, function() {
 		});
 		return false;
 	}

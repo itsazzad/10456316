@@ -1,11 +1,11 @@
 ﻿<section role="main">
 	<div>
-		<h1 class="icon icon-audio text-center">Speaker Check</h1>
+		<h1 class="icon icon-audio text-center">{{translations.sCSpeaker}}</h1>
 		<p>
-			We need to make sure your speakers are working properly.
+			{{translations.sCWe}}
 		</p>
 		<p class="instructions">
-			Play the audio clip. Can you hear a person talking?
+			{{translations.sCPlay}}
 		</p>
 
 		<div class="player no-js" id="testSpeaker" playCallBack="enableYesNoSpeakerButtons">
@@ -29,10 +29,10 @@
 		
 		<div class="confirmation-buttons">
 			<button class="btn-negative disabled" id="noSpeaker" onclick="showSoundCantHear()">
-				No
+				{{translations.sCNo}}
 			</button>
 			<button class="btn-positive disabled" id="yesSpeaker" onclick="nextButton(this)" name="submit">
-				Yes!
+				{{translations.sCYes}}!
 			</button>
 		</div>
 

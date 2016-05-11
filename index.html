@@ -167,14 +167,14 @@ mixpanel.init("32701635b2f90563ecac61e970b9a0c3");
 				<button id="nav_menu" ng-click="showMenu(1)">Menu</button>
 				<ul id="header_nav" ng-controller="headerCtrl" ng-class="{'expand':showExpand == 1, 'hide':isLoggedIn == 0}">
 					<button id="close_nav_menu" ng-click="showMenu(0)">Close</button>
-					<li id="menu_dashboard" class="header_nav highlight" ng-click="gotoDashboard()" ng-class="{'selected':isDashboard==1}" >DASHBOARD</li>
+					<li id="menu_dashboard" class="header_nav highlight" ng-click="gotoDashboard()" ng-class="{'selected':isDashboard==1}" >{{translations.headDashboard}}</li>
 					<li id="menu_account" ng-mouseover="isactive=1"  ng-mouseleave="isactive=0" ng-init="isactive=0">
 						<div id="account_text" class="header_nav" ng-class="{'selected':isDashboard==0}">
-							MY ACCOUNT  <img src="images/arrow-black@2x.png" id="selectAccount" />
+							{{translations.headMyAccount}}  <img src="images/arrow-black@2x.png" id="selectAccount" />
 						</div>
 						<ul id="account_select" ng-class="{'expand':isactive==1}"> <!-- class="expand" -->
-							<li ng-click="gotoProfile()">MY PROFILE</li>
-							<li ng-click="logoutAng()">SIGN OUT</li>
+							<li ng-click="gotoProfile()">{{translations.headMyProfile}}</li>
+							<li ng-click="logoutAng()">{{translations.headSignOut}}</li>
 						</ul>
 						
 					</li>
@@ -190,43 +190,43 @@ mixpanel.init("32701635b2f90563ecac61e970b9a0c3");
 						<img src="images/oldui/arrow_setting.png"/>
 						<br>
 						<p>
-							<b>Please allow your microphone.</b>
+							<b>{{translations.messagedPleaseAllow}}</b>
 						</p>
 					</div>
 					<div id="HowAllowMic">
 						<div>
-							<b>Your microphone is disabled - please enable it.</b>
+							<b>{{translations.messagedYourMic}}</b>
 						</div>
 						<br/>
 						<div>
-							1. Click the Chrome menu <img src="images/oldui/mic-disabled.png" class="smallimage"/> on the browser toolbar.
+							{{translations.messagedAllowMic1}}
 							<br/>
-							2. Select <b>Always allow https://app.fluentiq.com to access your microphone.</b>.
+							{{translations.messagedAllowMic2}}
 							<br/>
-							3. Click <b>Done</b>.
+							{{translations.messagedAllowMic3}}
 							<br/>
-							4. Click <b>Retry now</b>
+							{{translations.messagedAllowMic4}}
 						</div>
 						<br>
 						<div class="buttons">
-							<input width="200px" name="cancel" type="button" value="Retry now" class="" onclick="return retryMic()"/>
+							<input width="200px" name="cancel" type="button" value={{translations.messagedAllowMicRetry}} class="" onclick="return retryMic()">
 						</div>
 					</div>
 					<div id="HowAllowFF">
 						<div>
-							<b>Your microphone is disabled - please enable it.</b>
+							<b>{{translations.messagedYourMic}}</b>
 						</div>
 						<br/>
 						<div>
-							1. Click the Website icon <img src="images/oldui/website-icon.png" class="smallimage"/> on the top left of the browser toolbar.
+							{{translations.messagedAllowEnable1}}
 							<br/>
-							2. Next to <b>Use The Microphone</b> choose <b>Allow</b>.
+							{{translations.messagedAllowEnable2}}
 							<br/>
-							3. Click <b>Retry now</b>
+							{{translations.messagedAllowEnable3}}
 						</div>
 						<br>
 						<div class="buttons">
-							<input width="200px" name="cancel" type="button" value="Retry now" class="" onclick="return retryMic()"/>
+							<input width="200px" name="cancel" type="button" value={{translations.messagedAllowEnableRetry}} class="" onclick="return retryMic()">
 						</div>
 					</div>
 
@@ -239,7 +239,7 @@ mixpanel.init("32701635b2f90563ecac61e970b9a0c3");
 						<br>
 						<br>
 						<div class="buttons">
-							<input width="200px" name="cancel" type="button" value="Retry now" class="" onclick="return retryMic()"/>
+							<input width="200px" name="cancel" type="button" value={{translations.messagedAllowMicRetry}} class="" onclick="return retryMic()">
 						</div>
 					</div>
 
@@ -251,13 +251,13 @@ mixpanel.init("32701635b2f90563ecac61e970b9a0c3");
 			<div class="alert alert-success" style="display: none;">
   				<a href="javascript: closeAlert();" class="close"  aria-label="close">&times;</a>
   				<!-- <strong>Success!</strong> Indicates a successful or positive action. -->
-  				<div id="alertMessageSucceed"> Password Sucessfully changed! </div>
+  				<div id="alertMessageSucceed"> {{translations.messagedPWChangeX}} </div>
 			</div>	
 
 			<div class="alert alert-danger" style="display: none;">
   				<a href="javascript: closeAlert();" class="close"  aria-label="close">&times;</a>
   				<!-- <strong>Success!</strong> Indicates a successful or positive action. -->
-  				<div id="alertMessageFail"> Password Sucessfully changed! </div>
+  				<div id="alertMessageFail"> {{translations.messagedPWChangeX}} </div>
 			</div>	
 			
 			<!-- content is injected here -->
